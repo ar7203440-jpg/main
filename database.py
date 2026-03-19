@@ -14,3 +14,6 @@ c.execute('''CREATE TABLE IF NOT EXISTS posts
 conn.commit()
 conn.close()
 print("✅ Database table ready!")
+git add business.db
+git commit -m "database with data"
+git push
