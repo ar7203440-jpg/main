@@ -1,0 +1,63 @@
+# main.py - Sab files ka ek saath controller
+import os
+import sys
+
+def show_menu():
+    print("\n" + "="*60)
+    print("🤖 MY SMART BOT - MAIN MENU (Roman Urdu)")
+    print("="*60)
+    print("1. 📝 Naya content banao (content_agent.py)")
+    print("2. 📋 Saari posts dekho (show_posts.py)")
+    print("3. 💰 Earnings tracker (earnings_tracker.py)")
+    print("4. 💸 Advanced income generator (income_generator.py)")
+    print("5. 🗄️ Database setup (database.py)")
+    print("6. 🧪 AI test karo (test.py)")
+    print("7. 🚪 Exit")
+    print("="*60)
+
+def run_file(filename):
+    """Run a Python file and wait for it to complete"""
+    print(f"\n🚀 Running {filename}...")
+    print("-"*40)
+    result = os.system(f"python {filename}")
+    print("-"*40)
+    if result == 0:
+        print(f"✅ {filename} successfully chal gaya!")
+    else:
+        print(f"❌ {filename} mein error aaya. Check karo.")
+    input("\n📌 Vapas menu mein aane ke liye Enter press karo...")
+
+def main():
+    while True:
+        show_menu()
+        choice = input("Apni choice likho (1-7): ").strip()
+        
+        if choice == '1':
+            run_file("content_agent.py")
+        
+        elif choice == '2':
+            run_file("show_posts.py")
+        
+        elif choice == '3':
+            run_file("earnings_tracker.py")
+        
+        elif choice == '4':
+            run_file("income_generator.py")
+        
+        elif choice == '5':
+            run_file("database.py")
+        
+        elif choice == '6':
+            run_file("test.py")
+        
+        elif choice == '7':
+            print("\n👋 Allah Hafiz! Shukriya system use karne ka.")
+            print("Koi masla ho to poochh lena.")
+            sys.exit(0)
+        
+        else:
+            print("❌ Galat choice! Wapas try karo.")
+            input("Press Enter to continue...")
+
+if __name__ == "__main__":
+    main()
