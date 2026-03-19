@@ -52,6 +52,25 @@ with col_ch2:
 
 st.subheader("📋 All Posts")
 if not posts_df.empty:
+    import os
+import sqlite3
+
+# اگر ڈیٹابیس نہ ہو تو بنا دو
+if not os.path.exists('business.db'):
+    conn = sqlite3.connect('business.db')
+    c = conn.cursor()
+    c.execute('''CREATE TABLE IF NOT EXISTS earnings
+                 (id INTEGER PRIMARY KEY AUTOINCREMENT,
+                  amount REAL,
+                  source TEXT,
+                  date DATETIME DEFAULT CURRENT_TIMESTAMP)''')
+    c.execute('''CREATE TABLE IF NOT EXISTS posts
+                 (id INTEGER PRIMARY KEY AUTOINCREMENT,
+                  content TEXT,
+                  platform TEXT,
+                  timestamp DATETIME DEFAULT CURRENT_TIMESTAMP)''')
+    conn.commit()
+    conn.close()
     st.dataframe(posts_df)
 else:
     st.info("No posts yet.")
